@@ -8,7 +8,7 @@ public class Modelo {
     @Id
     @Column(name = "ID_MODELO")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String idModelo;
+    private Long idModelo;
 
     @Column(name = "DESC_MODELO")
     private String descModelo;
@@ -16,11 +16,11 @@ public class Modelo {
 
     public Modelo(){}
 
-    public String getIdModelo() {
+    public Long getIdModelo() {
         return idModelo;
     }
 
-    public void setIdModelo(String idModelo) {
+    public void setIdModelo(Long idModelo) {
         this.idModelo = idModelo;
     }
 

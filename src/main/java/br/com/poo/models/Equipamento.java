@@ -20,7 +20,7 @@ public class Equipamento {
     @Id
     @Column(name = "ID_EQUIPAMENTO")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private float idEquipamento;
+    private Long idEquipamento;
 
     public Equipamento() {
     }
@@ -53,7 +53,7 @@ public class Equipamento {
         return idEquipamento;
     }
 
-    public void setIdEquipamento(float idEquipamento) {
+    public void setIdEquipamento(Long idEquipamento) {
         this.idEquipamento = idEquipamento;
     }
 

@@ -11,7 +11,7 @@ public class Curso {
 
     @Id
     @Column(name = "ID_CURSO")
-    private int cdCurso;
+    private Long cdCurso;
 
     @Column(name = "NM_CURSO")
     private String nomeCurso;
@@ -23,7 +23,7 @@ public class Curso {
         this.nomeCurso = nomeCurso;
     }
 
-    public Curso(int cdCurso, String nomeCurso) {
+    public Curso(Long cdCurso, String nomeCurso) {
         this.cdCurso = cdCurso;
         this.nomeCurso = nomeCurso;
     }
@@ -32,7 +32,7 @@ public class Curso {
         return cdCurso;
     }
 
-    public void setCdCurso(int cdCurso) {
+    public void setCdCurso(Long cdCurso) {
         this.cdCurso = cdCurso;
     }
 

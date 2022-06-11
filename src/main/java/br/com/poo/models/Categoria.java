@@ -8,7 +8,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_CATEGORIA")
-    private int idCategoria;
+    private Long idCategoria;
 
     @Column(name = "DESC_CATEGORIA")
     private String DescCategoria;
@@ -21,11 +21,11 @@ public class Categoria {
         DescCategoria = descCategoria;
     }
 
-    public int getIdCategoria() {
+    public Long getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 
