@@ -1,6 +1,7 @@
 package br.com.poo.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Equipamento {
@@ -16,6 +17,9 @@ public class Equipamento {
     @OneToOne
     @JoinColumn(name = "ID_CATEGORIA")
     private Categoria categoria;
+
+    @Column(name = "status")
+    private String status;
 
     @Id
     @Column(name = "ID_EQUIPAMENTO")
@@ -57,4 +61,15 @@ public class Equipamento {
         this.idEquipamento = idEquipamento;
     }
 
+    public Boolean estaEmprestado(){
+        return Objects.equals(this.status, "indisponivel");
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

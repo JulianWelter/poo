@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "EMPRESTIMO")
@@ -22,6 +23,9 @@ public class Emprestimo {
     @OneToOne
     @JoinColumn(name ="ID_PESSOA")
     private Pessoa pessoa;
+
+    @Column(name = "tipo")
+    private String tipo;
 
     @Column(name ="DATA_EMPRESTIMO")
     private Date DtEmprestimo = new Date();
@@ -61,4 +65,15 @@ public class Emprestimo {
         DtEmprestimo = dtEmprestimo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Boolean verificaDevolucao(){
+        return Objects.equals(this.tipo, "devolução");
+    }
 }

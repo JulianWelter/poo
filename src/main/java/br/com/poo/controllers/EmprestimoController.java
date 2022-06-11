@@ -15,15 +15,27 @@ import org.springframework.web.bind.annotation.*;
 public class EmprestimoController {
 
     private final EmprestimoRepository emprestimoRepository;
+    private final EquipamentoRepository equipamentoRepository;
 
     @Autowired
-    public EmprestimoController(EmprestimoRepository emprestimoRepository) {
+    public EmprestimoController(EmprestimoRepository emprestimoRepository, EquipamentoRepository equipamentoRepository) {
         this.emprestimoRepository = emprestimoRepository;
+        this.equipamentoRepository = equipamentoRepository;
     }
 
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Emprestimo emprestimo) {
-        return new ResponseEntity<>(emprestimoRepository.save(emprestimo), HttpStatus.OK);
+        Equipamento equipamento = emprestimo.getEquipamento();
+        if (!equipamento.estaEmprestado() && !emprestimo.verificaDevolucao()) {
+            equipamento.setStatus("indisponivel");
+            emprestimo.setEquipamento(equipamentoRepository.save(equipamento));
+            return new ResponseEntity<>(emprestimoRepository.save(emprestimo), HttpStatus.OK);
+        }
+        else if (emprestimo.verificaDevolucao()) {
+            equipamento.setStatus("disponivel");
+            emprestimo.setEquipamento(equipamentoRepository.save(equipamento));
+            return new ResponseEntity<>(emprestimoRepository.save(emprestimo), HttpStatus.OK);
+        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
