@@ -31,7 +31,7 @@ public class ProfessorController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        if (!professorRepository.existsById(id)) {
+        if (professorRepository.existsById(id)) {
             professorRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

@@ -36,7 +36,7 @@ public class AlunoController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        if (!alunoRepository.existsById(id)) {
+        if (alunoRepository.existsById(id)) {
             alunoRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

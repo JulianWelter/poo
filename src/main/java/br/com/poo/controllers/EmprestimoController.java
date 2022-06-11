@@ -33,7 +33,7 @@ public class EmprestimoController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        if (!emprestimoRepository.existsById(id)) {
+        if (emprestimoRepository.existsById(id)) {
             emprestimoRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }

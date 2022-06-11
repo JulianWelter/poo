@@ -31,7 +31,7 @@ public class EquipamentoController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        if (!equipamentoRepository.existsById(id)) {
+        if (equipamentoRepository.existsById(id)) {
             equipamentoRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
