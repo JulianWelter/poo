@@ -26,6 +26,11 @@ public class EmprestimoController {
         return new ResponseEntity<>(emprestimoRepository.save(emprestimo), HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody Emprestimo emprestimo) {
+        return new ResponseEntity<>(emprestimoRepository.save(emprestimo), HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(emprestimoRepository.findAll(), HttpStatus.OK);

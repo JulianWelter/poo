@@ -1,7 +1,6 @@
 package br.com.poo.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Equipamento {
@@ -14,13 +13,9 @@ public class Equipamento {
     @JoinColumn(name = "ID_MODELO")
     private Modelo modelo;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "equipamento")
-    private List<Emprestimo> relatorioDeEmprestimo;
-
     @OneToOne
     @JoinColumn(name = "ID_CATEGORIA")
     private Categoria categoria;
-//    private Status emprestadoOuNaoEmprestado;
 
     @Id
     @Column(name = "ID_EQUIPAMENTO")

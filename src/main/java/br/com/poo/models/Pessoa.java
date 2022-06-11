@@ -1,7 +1,6 @@
 package br.com.poo.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Pessoa {
@@ -12,14 +11,11 @@ public class Pessoa {
     @Column(name = "NOME_PESSOA")
     private String nome;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
-    private List<Emprestimo> relatorioDeEmprestimo;
-
     public Pessoa() {
     }
 
     public Pessoa(Long i, String nome) {
-        this.id =  i;
+        this.id = i;
         this.nome = nome;
     }
 
