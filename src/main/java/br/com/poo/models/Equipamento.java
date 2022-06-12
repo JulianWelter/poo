@@ -6,15 +6,15 @@ import java.util.Objects;
 @Entity
 public class Equipamento {
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_MARCA")
     private Marca marca;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_MODELO")
     private Modelo modelo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_CATEGORIA")
     private Categoria categoria;
 
@@ -24,7 +24,7 @@ public class Equipamento {
     @Id
     @Column(name = "ID_EQUIPAMENTO")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idEquipamento;
+    private Long idEquipamento = 0L;
 
     public Equipamento() {
     }
@@ -53,7 +53,7 @@ public class Equipamento {
         this.categoria = categoria;
     }
 
-    public float getIdEquipamento() {
+    public Long getIdEquipamento() {
         return idEquipamento;
     }
 
